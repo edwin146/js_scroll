@@ -32,9 +32,13 @@
 
 		function updateText()
 		{
-			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+		    var next_char = words[word_counter][character_counter++];
+		    if (next_char == " "){
+		        next_char = "&nbsp;"
+			}
+			el.innerHTML = el.innerHTML+ next_char
 
-			if(character_counter == words[word_counter].length)
+			if(character_counter > words[word_counter].length)
 			{
 				word_counter++; 	//choose a different word
 				character_counter = 0;	//start over with the first character of the word
@@ -46,7 +50,7 @@
 			}
 		}
 
-		setInterval(updateText,300);
+		setInterval(updateText,1000);
 
 	</script>
 
